@@ -1,0 +1,25 @@
+configuration-as-code:
+  version: 1
+  deprecated: warn
+  restricted: reject
+
+jenkins:
+  systemMessage: |-
+    Local Jenkins
+
+  authorizationStrategy: "loggedInUsersCanDoAnything"
+
+  securityRealm:
+    local:
+      allowsSignup: false
+      enableCaptcha: false
+      users:
+        - id: ${JENKINS_ADMINISTRATOR_USERNAME:-administrator}
+          password: ${JENKINS_ADMINISTRATOR_PASSWORD:-changeit}
+
+  crumbIssuer: "standard"
+
+unclassified:
+  location:
+    adminAddress: "eduardo cerqueira <ecerquei@gmail.com>"
+    url: "http://localhost:8080"
